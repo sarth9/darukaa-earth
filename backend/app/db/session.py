@@ -5,7 +5,7 @@ from app.core.config import settings
 
 engine = create_engine(
     settings.DATABASE_URL,
-    pool_pre_ping=True,       # 🔥 fixes dead connections
+    pool_pre_ping=True,  # 🔥 fixes dead connections
     pool_size=5,
     max_overflow=10,
 )

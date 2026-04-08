@@ -13,7 +13,9 @@ class Site(Base):
     __tablename__ = "sites"
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    project_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("projects.id"), nullable=False)
+    project_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("projects.id"), nullable=False
+    )
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     site_code: Mapped[str] = mapped_column(String(100), nullable=False, unique=True, index=True)
     area_hectares: Mapped[float] = mapped_column(Float, nullable=False, default=0)

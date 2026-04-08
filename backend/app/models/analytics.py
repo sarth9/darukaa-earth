@@ -12,7 +12,9 @@ class SiteAnalytics(Base):
     __tablename__ = "site_analytics"
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    site_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("sites.id"), nullable=False)
+    site_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("sites.id"), nullable=False
+    )
     observed_on: Mapped[date] = mapped_column(Date, nullable=False)
     carbon_score: Mapped[float] = mapped_column(Float, nullable=False)
     biodiversity_score: Mapped[float] = mapped_column(Float, nullable=False)

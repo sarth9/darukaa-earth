@@ -80,9 +80,7 @@ def list_project_sites(
         raise HTTPException(status_code=404, detail="Project not found")
 
     sites = db.scalars(
-        select(Site)
-        .where(Site.project_id == project_id)
-        .order_by(Site.created_at.desc())
+        select(Site).where(Site.project_id == project_id).order_by(Site.created_at.desc())
     ).all()
 
     return list(sites)
